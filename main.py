@@ -1,5 +1,5 @@
 import importlib
-
+from  Module_2.bodo import Database_2
 
 
 class LazyModule:
@@ -14,13 +14,22 @@ class LazyModule:
         return getattr(self._load(), item)
 
 
+
 if __name__ == "__main__":
+    ######################################################################
+    # pierwszy sposób
 
     LazyModule('Module_1.modo')
     a = LazyModule('Module_1.modo')
 
     # Aby użyć 'connection', musisz utworzyć obiekt bazy danych:
     db = a.Database("my_connection_string")
-    print(f"To jest 'connection' w obiekcie Database: {db.connection}")
+######################################################################
+
+    # drugi sposób - uruchomienie samej metody w klasie modułu - ale import działa odrazu
+
+    b = Database_2()
+    b.initialize('con str 2')
+
 
 
